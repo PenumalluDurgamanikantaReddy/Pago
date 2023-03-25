@@ -1,0 +1,23 @@
+.banner{
+
+    /* background-image: url("../../Imgs/bannerimg.jpg"); */
+    /* background-image: url("../../Imgs/infi.jpg.png"); */
+    background-image: url("../../Imgs/infii.png");
+}
+
+.bannerContent{
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 25;
+    justify-content: space-around;
+
+}
+
+.tagline{
+    display: flex;
+    flex-direction: column;
+    height: 40%;
+    justify-content: center;
+    text-align: center;
+}

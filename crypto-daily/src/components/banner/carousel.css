@@ -1,0 +1,21 @@
+.carousel{
+
+    height: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.carouselitem{
+
+    display: "flex";
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+    cursor: "pointer";
+  text-transform: uppercase; 
+    color: "white";
+}
+
+.coindata{
+
+}

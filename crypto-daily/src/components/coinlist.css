@@ -1,0 +1,43 @@
+.searchbar{
+    border: 1px solid white;
+    height: 50px;
+    width: 100%;
+    background-color: transparent;
+    border-radius: 5px;
+    font-size: larger;
+    font-weight: 400;
+    font-family: "Montserrat";
+    color: white;
+   margin-bottom: 20;
+}
+.table{
+   height:60%;
+    width: 100%;
+    display: flex;
+    row-gap: 2rem;
+}
+
+/* th{
+
+    gap: 2rem;
+} */
+
+.eachccoinbox{
+     /* border-top: 0px solid; */
+
+height: auto;
+  display: flex;
+    flex-direction: column;
+     max-width: 2.5rem;
+     justify-content: space-around;
+}
+
+
+
+.eachcoinfullbox:hover{
+background-color: rgb(65, 65, 65);
+border-radius: 5px;
+}
+
+
+

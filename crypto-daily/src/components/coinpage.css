@@ -1,0 +1,23 @@
+.typocoiname{
+
+
+    font-weight: bolder;
+}
+
+.description{
+
+    width: "100%";
+    font-family: "Montserrat";
+    padding: 25;
+    padding-bottom: 15;
+    padding-top: 0;
+    text-align: "justify";
+    text-align: center;
+
+}
+
+.marketHeading{
+   font-weight: bold;
+    font-family:"Montserrat";
+
+}
