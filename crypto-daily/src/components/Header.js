@@ -13,7 +13,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { cryptoactions } from '../Reduxstore';
 import { useEffect,useState } from 'react';
-import { Avatar } from '@mui/material';
+
 import { doc } from "firebase/firestore"
 import { db } from '../firebase';
 import { onSnapshot } from 'firebase/firestore';
@@ -24,7 +24,6 @@ const history=useHistory()
 const dispatch=useDispatch()
 const [curreny,SetuseState]=useState("INR")
 const cryptodata=useSelector((state)=>{ return state.crpyto.currency}) 
-const sybmol=useSelector((state)=>{ return state.crpyto.symbol}) 
 const userdata=useSelector((state)=>{ return state.crpyto.userdata})
 const userUid=useSelector((state)=>{ return state.crpyto.userdata.userUid})
 const islogin=useSelector((state)=>{ return state.crpyto.islogin})
@@ -88,14 +87,23 @@ const Profile=styled("div")(({ theme })=>({
 
   }
 }))
-const userimg=sessionStorage.getItem("userimg")
-const username=sessionStorage.getItem("username")
+const Typo=styled("div")(({ theme })=>({
+   fontSize:"2rem",
+   fontWeight:"bold",
+   cursor:"pointer",
+   color: "gold",
+ fontFamily: 'Montserrat',
+  [theme.breakpoints.down("xl")] :{
+    fontSize:"1rem",
+    cursor:"pointer",
+  }
+}))
   return (
     <ThemeProvider theme={darkTheme}>
  <AppBar position="static" color='transparent'>
  <Container>
  <Toolbar style={{marginLeft:10}}>
- <Typography variant='h6'   onClick={historyHandler} className='typo'  style={{fontWeight:"bold"}} >Crypto Daily</Typography>
+ <Typo  onClick={historyHandler} className='typo'  style={{fontWeight:"bold"}} >Crypto Daily</Typo>
  
  <Select  onChange={currencyHandler} value={curreny} variant='outlined' style={{width:100,height:50,marginRight:10 }}>
  <MenuItem value={"INR"}>INR</MenuItem>

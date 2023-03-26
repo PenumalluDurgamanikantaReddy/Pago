@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
+
 import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
+
 import { useState,useEffect } from 'react';
 import WatchItem from './WatchItem';
 import axios from 'axios';
@@ -17,9 +17,9 @@ export default function WatchlistSidebar() {
     right: false,
   });
   const cryptodata=useSelector((state)=>{ return state.crpyto.currency}) 
-  const sybmol=useSelector((state)=>{ return state.crpyto.symbol}) 
+
   const watchlist = localStorage.getItem("watchlist")
-  const itemAdded=useSelector((state)=>{ return state.crpyto.itemAdded}) 
+
     ? localStorage.getItem("watchlist").split(",")
     : [];
     const [coins, setCoins] = useState([]);
@@ -47,7 +47,10 @@ export default function WatchlistSidebar() {
     height:"100%",
     display:'flex',
     flexDirection:"column",
-    fontFamily:"Montserrat"
+    fontFamily:"Montserrat",
+    [theme.breakpoints.down("xl")] :{
+      width:300,
+    }
   }))
 const Profile=styled("div")(({theme})=>({
     display:"flex",
@@ -73,11 +76,27 @@ const WatchlistConatiner=styled("div")(({theme})=>({
     display:"flex",
     flexDirection:"column",
     alignItems:"center",
+    textAlign:"center",
     gap:12,
-    overflow:"scroll"
+    overflow:"scroll",
+    [theme.breakpoints.down("xl")]:{
+      alignItems:"left",
+      textAlign:"left",
+     marginRight:20
+    }
 
 }))
 
+
+const WatchItems=styled("div")(({theme})=>({
+  fontSize:15,
+  textShadow:"0 0 5px black",
+  [theme.breakpoints.down("xl")]:{
+    fontSize:10,
+    textShadow:"0 0 5px black",
+   marginRight:50
+  }
+}))
 
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -96,7 +115,7 @@ const WatchlistConatiner=styled("div")(({theme})=>({
         <React.Fragment key={anchor}>
       
           <Avatar   onClick={toggleDrawer(anchor, true)}  style={{height:"38",width:"38",marginRight:10,cursor:"pointer"}}  src={userimg} alt={username}/>
-  
+         
           <Drawer
             anchor={anchor}
             open={state[anchor]}
@@ -111,8 +130,8 @@ const WatchlistConatiner=styled("div")(({theme})=>({
        <span style={{fontFamily:"Montserrat",fontWeight:"bold",fontSize:30,width:"100%",textAlign:"center"}}>{username}</span>
 
        <WatchlistConatiner>
-       <span style={{fontSize:15,textShadow:"0 0 5px black"}}>
-       WatchList
+       <WatchItems style={{fontSize:15,textShadow:"0 0 5px black"}}>
+       <p style={{marginLeft:20,color:"gold"}}>WatchList</p>
        <ul>
        {
         coins.map((each)=>{
@@ -122,7 +141,7 @@ const WatchlistConatiner=styled("div")(({theme})=>({
         })
        }
        </ul>
-       </span>
+       </WatchItems>
        </WatchlistConatiner>
 
        </Profile>

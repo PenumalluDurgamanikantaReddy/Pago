@@ -1,16 +1,15 @@
-import logo from './logo.svg';
+
 import './App.css';
 import Login from './components/Login';
-import {BrowserRouter,Route,Redirect} from "react-router-dom"
+import {BrowserRouter,Route,} from "react-router-dom"
 import Header from './components/Header';
 import Home from './components/Home';
 import Coinpage from './components/CoinPage';
-// import { makeStyles } from '@mui/styles';
+
 import { styled } from '@mui/material/styles';
-// import { makeStyles } from '@mui/styles';
+
 import { useSelector } from 'react-redux';
-import { Fragment } from 'react';
-import WatchListPage from './components/banner/WatchListPage';
+
 
 function App() {
   const islogin=useSelector((state)=>{ return state.crpyto.islogin})
@@ -40,7 +39,6 @@ function App() {
 <Route path="/coins/:coinid" component={Coinpage}/>
 
 
-<Route  path ="/watchlist" component={WatchListPage}/>
 
 <Route path="/" exact>
 <Login/>

@@ -2,9 +2,7 @@ import React from 'react'
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import { createTheme,ThemeProvider } from '@mui/system'
-// import Container from '@mui/material/Container';
-import laptop from "../Imgs/laptop.png"
-import phone from "../Imgs/phone.png"
+
 import Loginimg from './Loginimg';
 import { auth,provider } from '../firebase';
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
@@ -43,15 +41,15 @@ const darkTheme = createTheme({
     borderRadius:5,
     padding:10,
     paddingLeft:10,
-    paddingRight:20,
+    paddingRight:10,
     fontFamily:"Montserrat",
     cursor:"pointer",
     background:"gold",
     color:"black",
     fontWeight:700,
     "&:hover":{
-        background:"gold",
-        color:"black"
+      textShadow:"2px 2px blue",
+      color:"black"
     },
 
 }))
@@ -62,7 +60,7 @@ const darkTheme = createTheme({
 
   const Sidebar = styled('div')(({ theme }) => ({
     width:"30%",
-    marginLeft:"5%",
+
     [theme.breakpoints.down('md')]: {
       width:"100%",
       alignItems: 'center',
@@ -71,7 +69,12 @@ const darkTheme = createTheme({
     flexDirection:"column",
     alignItems:"center",
     marginTop: 25,
- 
+    [theme.breakpoints.down('sm')] : {
+      flexDirection: "column",
+        alignItems: "center",
+       fontSize:"small",
+    },
+    
   }));
 
   const Container = styled('div')(({ theme }) => ({
@@ -80,18 +83,55 @@ const darkTheme = createTheme({
       flexDirection: 'column',
       alignItems: 'center',
     },
+    [theme.breakpoints.down('sm')] : {
+      flexDirection: "column",
+        alignItems: "center",
+    },
+    [theme.breakpoints.down("xs")] : {
+      alignItems:"start"
+    }
+
   }));
   
+const Typography=styled(("div"))(({theme})=>({
+  fontSize:"4rem",
+  fontWeight:"bold",
+  [theme.breakpoints.down('sm')] : {
+    flexDirection: "column",
+      alignItems: "center",
+      fontSize:"3rem"},
+   
+      [theme.breakpoints.down("xs")] : {
+        alignItems:"start",
+        fontSize:"em",
+        color:"red",
+        fontWeight:"300",
+      },
+      "&:hover":{
+        textShadow:"2px 2px blue",
+        color:"gold"
+      }
 
-
+}))
+const Typographyy=styled(("div"))(({theme})=>({
+  fontSize:"2rem",
+  [theme.breakpoints.down('sm')] : {
+    
+      fontSize:"1rem", 
+  },
+  "&:hover":{
+    textShadow:"2px 2px blue",
+    color:"gold"
+  }
+}))
   return (
     // <ThemeProvider theme={darkTheme}>
 
     <Container>
     <Sidebar style={{marginTop:160}}>
-    <Typography variant='h2' style={{fontFamily:"Montserrat",fontWeight:"bold",}}>Crypto Daily</Typography>
-    <Typography variant='h5' style={{fontFamily:"Montserrat",fontWeight:"bold",marginTop:10}}>Sign In here</Typography>
-    <SelectButton onClick={SignHandler} style={{textAlign:"center",minWidth:"100",marginTop:10,marginRight:2}}>Sign In</SelectButton>
+    <Typography  style={{fontFamily:"Montserrat",}}>Crypto Daily</Typography>
+    <Typographyy  style={{fontFamily:"Montserrat",fontWeight:"bold",marginTop:10}}>Sign In here</Typographyy>
+    <SelectButton onClick={SignHandler} style={{textAlign:"center",minWidth:"100",marginTop:10,marginRight:5}}>{" "} Sign In</SelectButton>
     </Sidebar>
 
    <Loginimg/>

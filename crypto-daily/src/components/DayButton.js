@@ -1,6 +1,5 @@
 import React from 'react'
 import { styled } from '@mui/material/styles';
-import { width } from '@mui/system';
 
 function DayButton({children,selected,onClick}) {
 
@@ -20,7 +19,14 @@ const SelectButton = styled('div')(({ theme }) => ({
         background:"gold",
         color:"black"
     },
-    width:"22%"
+    width:"22%",
+    [theme.breakpoints.down("xl")] :{
+      fontWeight:400,
+      fontSize:10,
+      textAlign:"left",
+      justifyItems:"left"
+    }
+
 }))
   return (
     <SelectButton onClick={onClick}>

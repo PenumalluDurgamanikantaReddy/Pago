@@ -5,14 +5,14 @@
     background-image: url("../../Imgs/infii.png");
 }
 
-.bannerContent{
+ .bannerContent{
     height: 400px;
     display: flex;
     flex-direction: column;
     padding-top: 25;
     justify-content: space-around;
 
-}
+} 
 
 .tagline{
     display: flex;

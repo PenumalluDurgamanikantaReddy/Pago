@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React,{useState,useEffect, Fragment} from 'react'
+import React,{useState,useEffect, } from 'react'
 import { useSelector } from 'react-redux'
 import { HistoricalChart } from './Api'
 import { createTheme,ThemeProvider } from '@mui/material'
@@ -7,8 +7,7 @@ import { styled } from '@mui/material/styles';
 import {Line} from "react-chartjs-2"
 import { Chart, CategoryScale } from 'chart.js';
 import { chartDays } from './data'
-import { Box } from '@mui/material';
-import faker from 'faker';
+
 import DayButton from './DayButton'
 import { Chart as ChartJS, LinearScale,PointElement,LineElement, Title, Tooltip,Legend,} from 'chart.js';
 ChartJS.register(LineElement, PointElement, LinearScale, Title,Legend,Tooltip,CategoryScale);
@@ -78,19 +77,14 @@ const data = {
     },
   ],
 };
-//  const options = {
-//   responsive: true,
-//   plugins: {
-//     legend: {
-//       position: 'top' as const,
-//     },
-//     title: {
-//       display: true,
-//       text: 'Chart.js Line Chart',
-//     },
-//   },
-// };
 
+const options={
+  elements: {
+    point: {
+      radius: 1.5,
+    },
+  },
+}
 
 
   return (
@@ -98,7 +92,7 @@ const data = {
    <Container>
 
   
-  <Line data={data}/> 
+  <Line data={data} options={options}/> 
  
 <div style={{display:"flex",marginTop:20,justifyContent:"space-around",widows:"100%"}}>
 {chartDays.map((each)=>(<DayButton key={each.value} onClick={()=>Setdays(each.value)} selected={each.value===days}>{each.label}</DayButton>))}

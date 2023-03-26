@@ -1,6 +1,6 @@
 import React from 'react'
 import laptop from "../Imgs/laptop.png"
-// import Container from '@mui/material/Container';
+
 import { styled } from '@mui/material/styles';
 function Loginimg() {
     const Container = styled('div')(({ theme }) => ({

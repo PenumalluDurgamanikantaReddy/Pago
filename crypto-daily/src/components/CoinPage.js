@@ -9,8 +9,7 @@ import { Typography } from '@mui/material';
 import "./coinpage.css"
 import { numberWithCommas } from './banner/Carousel';
 import Button from '@mui/material/Button';
-import { doc, setDoc } from 'firebase/firestore';
-import {db} from ".//../firebase"
+
 import { useDispatch } from 'react-redux';
 import { cryptoactions } from '../Reduxstore';
 import { addToWatchlist, removeFromWatchlist }  from "./Watchlist"
@@ -101,33 +100,26 @@ const DiscriptioTypgrahpy=styled(Typography)(({ theme }) => ({
 
   }))
   
+  const PricessTypography=styled(Typography)(({theme})=>({
+    fontWeight: "600",
+    marginBottom: 20,
+    fontFamily: "Montserrat",
+    fontSize:"2rem",
+    [theme.breakpoints.down("xl")]:{
+      fontSize:"rem",
+      marginTop:40,
+      fontWeight: "500",
+    }
+
+  }))
   useEffect(() => {
     fetchCoinHandler()
   }, [])
 
-  // const removeFromWatchlist = async () => {
-  //   const coinRef = doc(db, "watchlist", user.uid);
-  //   try {
-  //     await setDoc(
-  //       coinRef,
-  //       { coins: watchlist.filter((wish) => wish !== coin?.id) },
-  //       { merge: true }
-  //     );
 
-const userUid=sessionStorage.getItem("userUid")
-  const addtoWatchlist= async()=>{
-    // // console.log(userUid)
-    // const addCoinRef =doc(db,"watchlist",userUid);
-                   
-    // // const coinRef = doc(db, "watchlist", user.uid);
-    // try{
-    // await setDoc(addCoinRef,{coints:watchlist?[...watchlist,coin?.id]:coin?.id},{ merge: true })
-    // dispatch(cryptoactions.SetAlert({open: true,message:`${coin.name} added to Watchlist` ,type: "success"}))
-    // }
-    // catch{
 
-    // }
-  }
+
+
 
 if(!coin)return "isloading"
   return (
@@ -141,20 +133,20 @@ if(!coin)return "isloading"
   <span style={{display:"flex"}}>
 <HeadingTypography   variant="h4" >Rank:</HeadingTypography>
  &nbsp;  &nbsp;
-<Typography variant="h4" >{coin?.market_cap_rank}</Typography>
+<Typography variant="h4"  style={{marginTop:2}}>{coin?.market_cap_rank}</Typography>
   </span>
   <span style={{display:"flex"}}>
-  <HeadingTypography   variant="h4" >Current Price:</HeadingTypography>
+  <HeadingTypography   variant="h4" >Current Price: &nbsp; {sybmol}</HeadingTypography>
    &nbsp;  &nbsp;
-  <Typography   variant="h4" >
-   {sybmol}{" "} {numberWithCommas(coin?.market_data.current_price[cryptodata.toLowerCase()])}
+  <PricessTypography >
+   {" "} {numberWithCommas(coin?.market_data.current_price[cryptodata.toLowerCase()])}
 
-  </Typography>
+  </PricessTypography>
     </span>
     <span style={{display:"flex"}}>
-    <HeadingTypography   variant="h4" >Market Cap:</HeadingTypography>
+    <HeadingTypography   variant="h4" >Market Cap:&nbsp;&nbsp;&nbsp;&nbsp;{"      "}{sybmol}</HeadingTypography>
      &nbsp;  &nbsp;
-    <Typography  variant="h4" >  {sybmol}{" "} {numberWithCommas(coin?.market_data.market_cap[cryptodata.toLowerCase()].toString().slice(0,6))}</Typography>
+    <PricessTypography  variant="h4" >{numberWithCommas(coin?.market_data.market_cap[cryptodata.toLowerCase()].toString().slice(0,6))}</PricessTypography>
       </span>
       {isWatchlist || isAdded 
         ? <Button  onClick={() => { setIsAdded(false);removeFromWatchlist(coin.id);}} variant='outlined' style={{width:"100%",height:40,backgroundColor:"red",color:"white"}}>{"Remove from Wishlist"}</Button>

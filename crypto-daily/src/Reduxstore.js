@@ -1,8 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit"
 import {configureStore} from "@reduxjs/toolkit"
-import { useEffect } from "react"
-import { doc } from "firebase/firestore"
-import { db } from "./firebase"
+
 const cryptodata={check:"",currency:"INR",symbol:"₹",userdata:{img:null,username:null,userUid:null},islogin:false,watchlist:[],alert:{open: false,message: "",type: "success",
  itemAdded:1 }}
 
@@ -55,10 +53,7 @@ const store=configureStore({
 })
 
 
-// useEffect(()=>{
 
-   
-// },[])
 
 export const cryptoactions=cryptoreducer.actions
 

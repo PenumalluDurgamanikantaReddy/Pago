@@ -1,26 +1,64 @@
 import React from 'react'
 import "./banner.css"
 import Container from '@mui/material/Container';
-import bannerimg from '../../Imgs/bannerimg.jpg'
+import { styled } from '@mui/material/styles';
+
 import Typography from '@mui/material/Typography';
-import { useEffect } from 'react';
-import axios from "axios"
+
 import Carousel from './Carousel';
 function Banner() {
-    // useEffect(()=>{
-    //     axios.get("https://api.coingecko.com/api/v3/search/trending")
-    //     .then((success)=>{
-    //     // console.log(success)
-    //     })
+
+  const Typography=styled(("div"))(({theme})=>({
+    fontSize:"4rem",
+    fontWeight:"bold",
+    [theme.breakpoints.down('sm')] : {
+      flexDirection: "column",
+        alignItems: "center",
+        fontSize:"3rem"},
+        fontWeight:"bold",
+        [theme.breakpoints.down("xl")] : {
+          alignItems:"start",
+          fontSize:"1.5rem",
+   
+          fontWeight:"bold",
+        }
+  }))
+  const Typographyy=styled(("div"))(({theme})=>({
+    fontSize:"4rem",
+    fontWeight:"400",
+    color:"white",
+    fontSize:"1rem",
+    [theme.breakpoints.down('sm')] : {
+      flexDirection: "column",
+        alignItems: "center",
+        fontSize:"3rem",
+        fontWeight:"400"},
+        [theme.breakpoints.down("xl")] : {
+          alignItems:"start",
+          fontWeight:"400",
+          fontSize:"1rem",
+         color:"white"
+        }
+  }))
+
+  const Bannerco=styled("div")(({theme})=>({
+    height: "80%",
+    display:"flex",
+    flexDirection:"column",
+    alignItems:"center",
+    paddingTop:"40",
+
+    justifyContent:"space-around",
 
 
-    // },[])
+  }))
+
   return (
     <div className='banner' >
     <Container className='bannerContent'>
     <div className='tagline'>
-    <Typography variant='h2' style={{fontFamily:"Montserrat",fontWeight:"bold",marginBottom:15}}>Crypto Daily</Typography>
-    <Typography variant='subtitle2' style={{color:"white",fontFamily:"Montserrat"}}>Get all types of updates on your favorite cryptocurrency</Typography>
+    <Typography  style={{fontFamily:"Montserrat"}}>Crypto Daily</Typography>
+    <Typographyy  style={{fontFamily:"Montserrat"}}>Get all types of updates on your favorite cryptocurrency</Typographyy>
     </div>  
     <Carousel/>
     </Container>
