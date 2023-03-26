@@ -7,7 +7,7 @@ import Container from '@mui/material/Container';
 import { styled } from '@mui/material/styles';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead  from '@mui/material/TableContainer';
-
+import PageButton from './PageButton'
 import "./coinlist.css"
 
 import Table from '@mui/material/TableContainer';
@@ -21,14 +21,17 @@ function Coinslist() {
     const [isLoading, SetisLoading] = useState(false)
     const [search,Setsearch]=useState("")
     const [page,Setpage]=useState(1)
+
         const cryptodata=useSelector((state)=>{ return state.crpyto.currency}) 
     const sybmol=useSelector((state)=>{ return state.crpyto.symbol}) 
     // const tableHeads=["Coin","Price","24h Change","Market Cap"]
     const islogin=useSelector((state)=>{ return state.crpyto.islogin})
     const history=useHistory()
+
 const getCoinslistHandler= async()=>{
 SetisLoading(true)
 const {data}= await axios.get(CoinList(cryptodata))
+console.log(data)
 Setcoinlist(data)
 SetisLoading(false)
 }
@@ -46,7 +49,7 @@ if(search.length===0){
   getCoinslistHandler()
 }
 
-}, [cryptodata,search])
+}, [cryptodata,search,page])
 
 
 const toCoinPageHandler=(id)=>{
@@ -122,6 +125,19 @@ const Headerfont=styled("div")(({theme})=>({
   
 }))
 
+const Pagination=styled("div")(({theme})=>({
+
+  display:"flex",
+  width:"70%",
+  marginLeft:"15%",
+  [theme.breakpoints.down("md")]:{
+ 
+  },
+  [theme.breakpoints.down("xl")]:{
+    
+  },
+
+}))
   return (
     <ThemeProvider theme={darkTheme}>
  <Container style={{textAlign:"center"}}>
@@ -191,8 +207,19 @@ const Headerfont=styled("div")(({theme})=>({
  
 }
 </TableContainer>
+<Pagination>
+{
+  coinlist.map((each,index)=>{
+    if(index>0 && index<11){
+      return ( <PageButton value={index} onClick={()=>{Setpage(index)}}/>)
+    }
+  
+  })
+}
 
+</Pagination>
       </Container>
+ 
     </ThemeProvider>
   )
 }
