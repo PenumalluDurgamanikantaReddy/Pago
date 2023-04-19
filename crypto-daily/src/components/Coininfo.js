@@ -22,10 +22,11 @@ function Coininfo(props) {
   const [graphhistoryddata, Setgraphhistorydata] = useState([]);
   const [days, Setdays] = useState(1)
   const currency=useSelector((state)=>{ return state.crpyto.currency})
+  const coinid=props.coin.id
 
   const fetchgraphData= async()=>{
     console.log(props.coin.id)
-    const {data}= await axios.get(HistoricalChart(props.coin.id,days,currency))
+    const {data}= await axios.get(HistoricalChart(coinid,days,currency))
     // const { data } = await axios.get(HistoricalChart(coin.id, days, currency));
     // console.log(data)
     Setgraphhistorydata(data.prices)
@@ -81,7 +82,7 @@ const data = {
 const options={
   elements: {
     point: {
-      radius: 1.5,
+      radius: 1,
     },
   },
 }

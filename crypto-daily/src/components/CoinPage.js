@@ -107,7 +107,7 @@ const DiscriptioTypgrahpy=styled(Typography)(({ theme }) => ({
     fontSize:"2rem",
     [theme.breakpoints.down("xl")]:{
       fontSize:"rem",
-      marginTop:40,
+      // marginTop:40,
       fontWeight: "500",
     }
 
@@ -136,17 +136,14 @@ if(!coin)return "isloading"
 <Typography variant="h4"  style={{marginTop:2}}>{coin?.market_cap_rank}</Typography>
   </span>
   <span style={{display:"flex"}}>
-  <HeadingTypography   variant="h4" >Current Price: &nbsp; {sybmol}</HeadingTypography>
+  <HeadingTypography   variant="h4" >Current Price: &nbsp;&nbsp;&nbsp; {" "}</HeadingTypography>
    &nbsp;  &nbsp;
-  <PricessTypography >
-   {" "} {numberWithCommas(coin?.market_data.current_price[cryptodata.toLowerCase()])}
-
-  </PricessTypography>
+  <PricessTypography  variant="h4">{sybmol}{numberWithCommas(coin?.market_data.current_price[cryptodata.toLowerCase()])}</PricessTypography>
     </span>
     <span style={{display:"flex"}}>
-    <HeadingTypography   variant="h4" >Market Cap:&nbsp;&nbsp;&nbsp;&nbsp;{"      "}{sybmol}</HeadingTypography>
+    <HeadingTypography   variant="h4" >Market Cap:&nbsp;&nbsp;&nbsp;&nbsp;{"      "}</HeadingTypography>
      &nbsp;  &nbsp;
-    <PricessTypography  variant="h4" >{numberWithCommas(coin?.market_data.market_cap[cryptodata.toLowerCase()].toString().slice(0,6))}</PricessTypography>
+    <PricessTypography  variant="h4" >{sybmol}{numberWithCommas(coin?.market_data.market_cap[cryptodata.toLowerCase()].toString().slice(0,6))}</PricessTypography>
       </span>
       {isWatchlist || isAdded 
         ? <Button  onClick={() => { setIsAdded(false);removeFromWatchlist(coin.id);}} variant='outlined' style={{width:"100%",height:40,backgroundColor:"red",color:"white"}}>{"Remove from Wishlist"}</Button>

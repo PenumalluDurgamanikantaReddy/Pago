@@ -65,6 +65,7 @@ const searchHandlerInput=(event)=>{
   let searchedcoins;
   if(event.target.value.length>=0){
     searchedcoins= coinlist.filter((eachcoin)=>{ return eachcoin.name.toLowerCase().includes(search) })
+    console.log("hello")
    Setcoinlist(searchedcoins)
   }
   console.log(searchedcoins)
